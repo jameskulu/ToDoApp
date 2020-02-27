@@ -1,0 +1,16 @@
+{% extends 'List/base.html' %}
+{% block content %} 
+<div class="card card-body" style="background-color: rgba(0, 0, 0, 0);opacity: .7;">
+  <div class="card-body text-center font-weight-bold">
+   <p style="color:white;font-family: 'Courier New', Courier, monospace;"> Are you sure want to delete "{{ tasks }}"?</p>
+  <div class="mt-4">
+    <form action="" method="POST">
+      {% csrf_token %}
+        <input type="submit" value="Confirm" class="btn btn-secondary">
+        <a href="/"> <button class="btn btn-danger" type="button">Cancel</button> </a>
+    </form>
+  </div>
+  </div>
+</div>
+
+{% endblock %}

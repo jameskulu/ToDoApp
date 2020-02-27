@@ -1,0 +1,13 @@
+{% extends 'List/base.html' %}
+{% block content %} 
+
+    <form action="" method="POST">
+      {% csrf_token %}
+      
+      {{form.title}}
+      <div class="text-left text-bold mt-2">
+        {{form.completed}}<label class="ml-2 text-light"> Completed</label></div><br>
+      <div class="text-left"><input class="btn btn-dark" type="submit" value="Update"></div>
+    </form>
+
+{% endblock %}

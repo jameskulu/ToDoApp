@@ -1,0 +1,29 @@
+{% extends 'List/base.html' %}
+{% block content %} 
+
+  <form method="POST" action="/">
+    {% csrf_token %}
+    {{form.title}}    <br>
+    <p class="text-left"><input type="submit" class ="btn btn-dark btn-lg btn-block " style="background-color:transparent"></p>
+  </form>
+
+  {% for task in tasks %}
+  <div style="background-color: rgba(0, 0, 0, 0);opacity: .7;" class="card card-body">
+  <div class="card-body text-center font-weight-bold">
+    
+    <small style="float: left;color:white">{{task.date_created}}</small>
+
+      {% if task.completed == False %}
+     <span style="font-size: 22px; font-family: 'Courier New', Courier, monospace;color:white"> {{task.title}}</span>
+      {% else %}
+      <strike style="color:gray"><span style="font-size: 22px;font-family: 'Courier New', Courier, monospace;color:white">{{task.title}}</span></strike>
+      {% endif %}
+      
+      <button class="btn btn-danger float-sm-right ml-2 btn-sm"><a style="text-decoration: none;" class="text-light" href="{% url 'delete' task.id %}">Delete</a></button>
+      <button class="btn btn-secondary float-sm-right btn-sm"><a style="text-decoration: none;" class="text-light" href="{% url 'update' task.id %}">Update</a> </button>
+  
+    </div>
+  </div>
+  {% endfor %}
+
+{% endblock %}
